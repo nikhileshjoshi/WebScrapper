@@ -34,8 +34,10 @@ func main() {
 
 	doc.Find("tr").Each(func(i int, s *goquery.Selection) {
 		//fmt.Println(i, len(s.Contents().Nodes) ,s.Contents().Text())
-		if len(s.Contents().Nodes) == 8 {
-			fmt.Println(s.Children().First().Text(), s.Children().Next().Text(), s.Children().Next().Text())
+		tds := s.Children()
+		if s.Contents().Size() == 8 {
+			fmt.Println(tds.Slice(0,1).Text(), "--" ,tds.Slice(1,2).Text(),tds.Slice(2,3).Text(),tds.Slice(3,4).Text(),
+													tds.Slice(4,5).Text(),tds.Slice(5,6).Text(),tds.Slice(6,7).Text(),tds.Slice(7,8).Text())
 		}
 		/*s.First().Find("td").Each(func(i int, s *goquery.Selection){
 			fmt.
